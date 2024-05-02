@@ -33,15 +33,26 @@ public class Main {
             System.out.println("Pelicula Retro que vale la pena ver");
         }
 
-        for (int i = 0; i < 3; i++) {
-            Scanner teclado = new Scanner(System.in);
-            System.out.println("Ingrese la nota o evaluacion que le darias a la pelicula: "+nombre);
-            double notaMatrix = teclado.nextDouble();
-            mediaEvaluacionUsuario = mediaEvaluacionUsuario + notaMatrix;
-        }
+        Scanner respuesta = new Scanner(System.in);
+        System.out.println("Desea calificar la pelicula? S/N ");
+        String calificar = respuesta.next().toLowerCase();
+        while (calificar.equals("s")) {
+            for (int i = 0; i < 3; i++) {
+                Scanner teclado = new Scanner(System.in);
+                System.out.println("Ingrese la nota o evaluacion que le darias a la pelicula: "+nombre);
+                double notaMatrix = teclado.nextDouble();
+                mediaEvaluacionUsuario = mediaEvaluacionUsuario + notaMatrix;
+            }
 
-        System.out.println("La evaluacion media  del usuario es: "+
-                mediaEvaluacionUsuario/3);
+            System.out.println("La evaluacion media  del usuario es: "+
+                    mediaEvaluacionUsuario/3);
+
+            System.out.println("Desea calificar nuevamente la pelicula? S/N ");
+            calificar = respuesta.next().toLowerCase(); // Convierte la entrada del usuario a minúsculas
+
+        }
+        System.out.println("Gracias por su calificación");
+
 
     }
 }
