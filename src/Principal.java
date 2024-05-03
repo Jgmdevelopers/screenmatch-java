@@ -54,6 +54,7 @@ public class Principal {
                     teclado.nextLine();
 
                     Serie serieUsuario = new Serie();
+
                     serieUsuario.setNombre(nombreSerie);
                     serieUsuario.setFechaDeLanzamiento(fechaDeLanzamientoSerie);
                     serieUsuario.setTemporadas(cantidadTemporadas);
