@@ -1,3 +1,4 @@
+import modelo.CalculadoraDeTiempo;
 import modelo.Pelicula;
 import modelo.Serie;
 
@@ -5,7 +6,14 @@ import java.util.Scanner;
 
 public class Principal {
     public void muestraElMenu(){
+        Pelicula peliculaUsuario = new Pelicula();
+
+        Serie serieUsuario = new Serie();
+
+        CalculadoraDeTiempo calculadoraDeTiempo = new CalculadoraDeTiempo();
+
         Scanner teclado = new Scanner(System.in);
+
         int opcion = 0;
 
         while (opcion != 9) {
@@ -31,11 +39,12 @@ public class Principal {
                     System.out.println("Ingrese la duracion en minutos");
                     int duracionEnMinutos = teclado.nextInt();
                     teclado.nextLine();
-                    Pelicula peliculaUsuario = new Pelicula();
+
                     peliculaUsuario.setNombre(nombre);
                     peliculaUsuario.setFechaDeLanzamiento(fechaDeLanzamiento);
                     peliculaUsuario.setTiempoDeDurancionEnMinutos(duracionEnMinutos);
                     peliculaUsuario.muestraFichaTecnica();
+                    calculadoraDeTiempo.incluye(peliculaUsuario);
                     break;
                 case 2:
                     System.out.println("Ingrese el nombre del titulo de la serie");
@@ -53,14 +62,16 @@ public class Principal {
                     int cantidadMinutosEpisodios = teclado.nextInt();
                     teclado.nextLine();
 
-                    Serie serieUsuario = new Serie();
-
                     serieUsuario.setNombre(nombreSerie);
                     serieUsuario.setFechaDeLanzamiento(fechaDeLanzamientoSerie);
                     serieUsuario.setTemporadas(cantidadTemporadas);
                     serieUsuario.setEpisodiosPorTemporada(cantidadEpisodios);
                     serieUsuario.setDuracionEnMinutosPorEpisodio(cantidadMinutosEpisodios);
                     serieUsuario.muestraFichaTecnica();
+                    calculadoraDeTiempo.incluye(serieUsuario);
+                    break;
+                case 3:
+                    System.out.println("Tiempo que necesitas para maratonear tus titulos favoritos " + calculadoraDeTiempo.getTiempoTotal() + " minutos.");
                     break;
                 case 9:
                     System.out.println("Saliendo del programa...");
